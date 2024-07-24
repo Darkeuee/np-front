@@ -3,3 +3,12 @@ pipeline {
         label 'agent'
     }
 }
+
+stages {
+  stage('Get-code') {
+    steps {
+      checkout scn
+    }
+  }
+
+}

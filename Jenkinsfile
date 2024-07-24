@@ -7,7 +7,7 @@ pipeline {
 stages {
   stage('Get-code') {
     steps {
-      checkout scn
+      checkout scm
     }
   }
 

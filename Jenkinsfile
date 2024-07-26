@@ -2,9 +2,7 @@ pipeline {
     agent {
         label 'agent'
     }
-}
-
-stages {
+    stages {
   stage('Get-code') {
     steps {
       checkout scm
@@ -12,3 +10,6 @@ stages {
   }
 
 }
+}
+
+

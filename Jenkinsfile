@@ -36,7 +36,7 @@ pipeline {
                 script {
                   // Prepare basic image for application
                   dockerTag = "${env.BUILD_ID}.${env.GIT_COMMIT.take(7)}"
-                  applicationImage = docker.build("darkeue/frontend:$dockerTag",".")
+                  applicationImage = docker.build("kornzysiek/frontend:$dockerTag",".")
                 }
             }
         }
@@ -54,6 +54,9 @@ pipeline {
     }
 
     post {
+        success {
+          build wait: false, job: 'selenium', parameters: [string(name: 'frontendDockerTag', value: dockerTag)]
+        }
         always {
           junit 'test-results/*.xml'
       }
